@@ -3,27 +3,21 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/impanar07/ML_CICD_Lab.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                bat 'py -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'pytest'
+                bat 'py -m pytest'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'python3 app.py'
+                bat 'py app.py'
             }
         }
 
